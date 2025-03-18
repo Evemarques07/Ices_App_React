@@ -14,7 +14,7 @@ import Saidas from '../pages/Saidas.jsx'
 
 const router = createBrowserRouter([
   {
-    path: '/login', 
+    path: '/', 
     element: <Login />,
   },
   {
