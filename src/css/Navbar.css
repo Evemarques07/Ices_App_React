@@ -1,0 +1,122 @@
+/* Estilos Gerais */
+#navbar {
+    background-color: #0097d9;
+    padding:20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+/* Logo */
+.logo {
+    border-radius: 10px;
+    font-size: 22px; /* Pode ser removido, a imagem substitui o texto */
+    font-weight: bold; /* Pode ser removido */
+    color: white; /* Pode ser removido */
+    background-color: white;
+    padding: 5px 10px; /* Padding superior/inferior de 5px e esquerda/direita de 10px */
+    display: flex; /* Para centralizar a imagem verticalmente */
+    align-items: center; /* Centraliza verticalmente */
+  }
+  
+  .logo-image {
+    height:4rem; /* Ajuste a altura conforme necessário */
+    width: auto; /* Mantém a proporção da imagem */
+  }
+
+/* Navbar para telas grandes */
+.nav-container {
+    /* margin-right: 3rem; */
+    display: flex;
+    gap: 20px;
+}
+
+.nav-link {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: all 0.3s ease-in-out;
+}
+
+.nav-link:hover {
+    background-color: white;
+    color: #0097d9;
+}
+
+/* Botão do menu hambúrguer */
+.menu-toggle {
+    display: none;
+    font-size: 28px;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    padding: 10px;
+}
+
+/* Drawer lateral */
+.drawer {
+    position: fixed;
+    top: 0;
+    left: -250px;
+    width: 250px;
+    height: 100%;
+    background-color: #0097d9;
+    box-shadow: 4px 0px 10px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    padding-top: 60px;
+    transition: left 0.3s ease-in-out;
+}
+
+.drawer.open {
+    left: 0;
+}
+
+/* Botão de fechar */
+.close-btn {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 24px;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+/* Links do drawer */
+.drawer .nav-link {
+    padding: 15px;
+    text-align: left;
+    display: block;
+    font-size: 20px;
+}
+
+.drawer .nav-link:hover {
+    background-color: white;
+    color: #0097d9;
+}
+
+/* Responsividade */
+@media (max-width: 800px) {
+    .nav-container {
+        display: none;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .logo-image {
+        height: 4rem; /* Ajuste para telas menores */
+      }
+}

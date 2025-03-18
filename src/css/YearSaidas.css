@@ -1,0 +1,63 @@
+/* Estilização geral */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* min-height: 100vh;  */
+    background-color: #f8f9fa;
+    padding: 20px;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+  
+  .fade-in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /* Título */
+  .title {
+    font-size: 22px;
+    font-weight: bold;
+    color: #0097d9;
+    margin-bottom: 20px;
+  }
+  
+  /* Container de botões dos anos */
+  .year-buttons-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    overflow-x: auto;
+    padding: 10px;
+    white-space: nowrap;
+    width: 100%;
+    justify-content: center;
+  }
+  
+  /* Botões dos anos */
+  .year-button {
+    min-width: 16rem;
+    padding: 12px 18px;
+    border-radius: 16px;
+    background-color: #0097d9;
+    color: #fff;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.1s ease, box-shadow 0.2s ease;
+    border: none;
+  }
+  
+  .year-button:hover {
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  .year-button:active {
+    transform: scale(0.9);
+  }
+  

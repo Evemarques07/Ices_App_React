@@ -1,0 +1,58 @@
+/* / src/css/Home.css */
+.container {
+    flex: 1;
+    background-color: #f0f0f0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.header {
+    padding: 20px;
+    align-items: center;
+    background-color: #0097d9; /* Match React Native header color */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    color: white; /* Ensure text is visible against header background */
+}
+
+.headerTitleContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between; /* Distribute space between title and aviso */
+    width: 100%;
+}
+
+.headerTitleText {
+    color: white; /* Match React Native header text color */
+    font-weight: bold;
+    font-size: 18px;
+    margin-right: 10px;
+}
+
+.avisoContainer {
+    background-color: yellow;
+    padding: 8px;
+    border-radius: 5px;
+}
+
+.avisoText {
+    color: black; /* Ensure text is visible on yellow background */
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.content {
+    padding: 20px;
+    font-size: 16px;
+    color: #333;
+}
+
+.content h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.content p {
+    line-height: 1.6;
+}

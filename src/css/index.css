@@ -1,0 +1,127 @@
+/* Importando regras globais */
+/* @import './Global.css'; */
+/* 
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+} */
+
+/* Reset global */
+/* * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+} */
+
+/* Links */
+/* a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: none;
+  transition: color 0.3s ease-in-out;
+} */
+/* 
+a:hover {
+  color: #535bf2;
+} */
+
+/* Corpo da página */
+/* body {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 320px;
+  min-height: 100vh;
+  background-color: #222;
+  box-shadow: 4px 0px 10px rgba(0, 0, 0, 0.3);
+  background-color: var(--background-color);
+} */
+
+/* Títulos */
+/* h1 {
+  font-size: 2.8em;
+  line-height: 1.2;
+  text-align: center;
+} */
+
+/* Botões */
+/* button {
+  align-self: center;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 10px 20px;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+button:hover {
+  border-color: #646cff;
+  background-color: #333;
+}
+
+button:focus,
+button:focus-visible {
+  outline: 3px auto -webkit-focus-ring-color;
+} */
+
+/* Modo claro */
+/* @media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+
+  a:hover {
+    color: #747bff;
+  }
+
+  button {
+    background-color: #f9f9f9;
+    color: #213547;
+  }
+} */
+
+/* Responsividade global */
+/* @media (max-width: 799px) {
+  body {
+    max-width: 799px;
+    margin: 0 auto;
+    padding: 10px;
+    overflow-x: hidden;
+  }
+
+  h1 {
+    font-size: 2.2em;
+  }
+
+  p {
+    font-size: 16px;
+    text-align: justify;
+  }
+
+  button {
+    width: 100%;
+    max-width: 250px;
+    display: block;
+    margin: 10px auto;
+    padding: 10px;
+    font-size: 16px;
+  }
+} */
