@@ -1,39 +1,39 @@
 import React, { useState, useEffect, useCallback } from "react";
-import { useLocation } from "react-router-dom";
-import axios from "axios";
-// import "../css/Saidas.css";
+import { useLocation, useNavigate } from "react-router-dom";
+import api from "../services/api";
+import "../css/Saidas.css";
 
 const Saidas = () => {
+  const [fadeIn, setFadeIn] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
   const { selectedYear, selectedMonth } = location.state || {};
   const [saidas, setSaidas] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [refreshing, setRefreshing] = useState(false);
   const [showList, setShowList] = useState(false);
-  
-  const token = JSON.parse(localStorage.getItem("token"));
+  const [totalGeral, setTotalGeral] = useState(0);
+
+  const token = localStorage.getItem("token");
 
   const fetchSaidas = useCallback(async () => {
+    if (!token) return; // Se não houver token, impede a busca
+
     setLoading(true);
     setError(null);
     setShowList(false);
 
     try {
-      const response = await axios.get("/api/saidas", {
-        headers: { Authorization: `Bearer ${token?.access_token}` }
+      const response = await api.get("/saidas", {
+        headers: { Authorization: `Bearer ${token}` },
       });
-      
+      console.log("Resposta da API:", response.data);
+
       if (!Array.isArray(response.data)) {
         throw new Error("Formato de resposta inválido");
       }
 
-      const saidasComEspaco = response.data.map((item) => ({
-        ...item,
-        tipo: item.tipo.replace(/_/g, " "),
-      }));
-
-      const saidasFiltradas = saidasComEspaco.filter((item) => {
+      const saidasFiltradas = response.data.filter((item) => {
         const itemDate = new Date(item.dataRegistro);
         return (
           itemDate.getFullYear() === selectedYear &&
@@ -41,64 +41,83 @@ const Saidas = () => {
         );
       });
 
-      const groupedData = Object.values(
-        saidasFiltradas.reduce((acc, item) => {
-          if (!acc[item.tipo]) {
-            acc[item.tipo] = { title: item.tipo, data: [], total: 0 };
-          }
-          acc[item.tipo].data.push(item);
-          acc[item.tipo].total += parseFloat(item.valor || 0);
-          return acc;
-        }, {})
+      const total = saidasFiltradas.reduce(
+        (acc, item) => acc + parseFloat(item.valor || 0),
+        0
       );
-      
-      setSaidas(groupedData);
+
+      setSaidas(saidasFiltradas);
+      setTotalGeral(total);
       setShowList(true);
     } catch (error) {
       console.error("Erro ao buscar saídas:", error);
       setError("Erro ao buscar as saídas. Tente novamente mais tarde.");
     } finally {
       setLoading(false);
-      setRefreshing(false);
     }
-  }, [selectedYear, selectedMonth]);
+  }, [selectedYear, selectedMonth, token]);
 
   useEffect(() => {
+    if (!token) {
+      setError("Você precisa estar logado para visualizar as saídas.");
+      return;
+    }
+
     if (selectedYear && selectedMonth) {
       fetchSaidas();
     }
-  }, [selectedYear, selectedMonth, fetchSaidas]);
+
+    setTimeout(() => setFadeIn(true), 100);
+  }, [selectedYear, selectedMonth, fetchSaidas, token]);
 
   return (
-    <div className="container">
+    <div className={`container ${fadeIn ? "fade-in" : ""}`}>
       <h2 className="title">Saídas</h2>
       {selectedYear && selectedMonth && (
         <h3 className="year-month">
           {new Intl.DateTimeFormat("pt-BR", { month: "long" }).format(
             new Date(selectedYear, selectedMonth - 1)
-          )} {selectedYear}
+          )}{" "}
+          {selectedYear}
         </h3>
       )}
-      
-      {loading && <p className="loading">Carregando...</p>}
-      {error && <p className="error">{error}</p>}
-      
-      {showList && (
-        <div className="saidas-list">
-          {saidas.map((section) => (
-            <div key={section.title} className="saidas-section">
-              <h4 className="section-header">{section.title}</h4>
-              {section.data.map((item) => (
+
+      {!token ? (
+        <div className="login-warning">
+          <p className="error">
+            ⚠️ Você precisa estar logado para visualizar os dados.
+          </p>
+          <button className="login-button" onClick={() => navigate("/login")}>
+            Fazer Login
+          </button>
+        </div>
+      ) : loading ? (
+        <p className="loading">Carregando...</p>
+      ) : error ? (
+        <p className="error">{error}</p>
+      ) : (
+        showList && (
+          <>
+            <div className="saidas-list">
+              {saidas.map((item) => (
                 <div key={item.idSaida} className="saida-item">
-                  <p><strong>Descrição:</strong> {item.descricao}</p>
-                  <p className="valor">💰 R$ {parseFloat(item.valor).toFixed(2)}</p>
-                  <p className="data">📅 {new Date(item.dataRegistro).toLocaleDateString("pt-BR")}</p>
+                  <p>
+                    <strong>Descrição:</strong> {item.descricao}
+                  </p>
+                  <p className="valor">
+                    💰 R$ {parseFloat(item.valor).toFixed(2)}
+                  </p>
+                  <p className="data">
+                    📅 {new Date(item.dataRegistro).toLocaleDateString("pt-BR")}
+                  </p>
                 </div>
               ))}
-              <p className="total">Total: R$ {section.total.toFixed(2)}</p>
             </div>
-          ))}
-        </div>
+            <p className="total-mes">
+              Total do mês: R$ {totalGeral.toFixed(2)}
+            </p>
+          </>
+        )
       )}
     </div>
   );

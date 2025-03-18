@@ -1,14 +1,22 @@
-// src/pages/Login.jsx
-import React, { useState } from "react";
-import '../css/Login.css';
+import React, { useState, useEffect } from "react";
+import "../css/Login.css";
 import api from "../services/api";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 
 const Login = () => {
+  const { user, token, login } = useAuth(); // Obtendo funções e dados do contexto
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const navigate = useNavigate();
+
+  // Se já estiver autenticado, redireciona para /home
+  useEffect(() => {
+    if (user && token) {
+      navigate("/home");
+    }
+  }, [user, token, navigate]);
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -19,17 +27,15 @@ const Login = () => {
     formData.append("password", password);
 
     try {
-      const response = await api.post("/auth/token", new URLSearchParams(formData).toString(), {
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-        },
+      const response = await api.post("/auth/token", formData.toString(), {
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        withCredentials: true, // Permite que cookies sejam armazenados (se for usar cookies HTTP-only)
       });
 
       if (response.status === 200) {
-        // Salva o access_token no localStorage
-        localStorage.setItem("token", JSON.stringify(response.data)); // Save the entire object as a string
-        alert("Login bem-sucedido!");
-        navigate('/home'); // Use navigate to redirect
+        const { access_token } = response.data;
+        login(null, access_token); // Passa o token para o contexto
+        navigate("/home");
       } else {
         setError("Usuário ou senha incorretos.");
       }

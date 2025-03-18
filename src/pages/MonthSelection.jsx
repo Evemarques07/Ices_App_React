@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import "../css/MonthSelection.css"; 
+import "../css/MonthSelection.css";
 
 const MonthSelection = () => {
   const navigate = useNavigate();
@@ -29,7 +29,8 @@ const MonthSelection = () => {
   ];
 
   const handleMonthPress = (monthValue) => {
-    navigate("/saidas/detalhes", { // Navega para a próxima tela
+    navigate("/saidas/detalhes", {
+      // Navega para a próxima tela
       state: { selectedYear, selectedMonth: monthValue }, // Passa ano e mês
     });
   };

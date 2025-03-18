@@ -1,58 +1,143 @@
 /* / src/css/Home.css */
+/* Reset básico para remover estilos padrão */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: inherit;
+  text-decoration: none;
+  list-style: none;
+  border: none;
+  outline: none;
+  background: none;
+}
+
+/* Reset para botões */
+button {
+  all: unset;
+  cursor: pointer;
+}
+
+/* Reset para inputs */
+input,
+textarea {
+  all: unset;
+}
+
 .container {
-    flex: 1;
-    background-color: #f0f0f0;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* min-height: 100vh;  */
+  background-color: #f8f9fa;
+  padding: 20px;
+  /* opacity: 0; */
+  transform: translateY(30px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
 
 .header {
-    padding: 20px;
-    align-items: center;
-    background-color: #0097d9; /* Match React Native header color */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    color: white; /* Ensure text is visible against header background */
+  padding: 20px;
+  border-radius: 10px;
+  align-items: center;
+  background-color: #0097d9; /* Match React Native header color */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  color: white; /* Ensure text is visible against header background */
 }
 
 .headerTitleContainer {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between; /* Distribute space between title and aviso */
-    width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between; /* Distribute space between title and aviso */
+  width: 100%;
 }
 
 .headerTitleText {
-    color: white; /* Match React Native header text color */
-    font-weight: bold;
-    font-size: 18px;
-    margin-right: 10px;
+  color: white; /* Match React Native header text color */
+  font-weight: bold;
+  font-size: 18px;
+  margin-right: 10px;
 }
 
 .avisoContainer {
-    background-color: yellow;
-    padding: 8px;
-    border-radius: 5px;
+  background-color: yellow;
+  padding: 8px;
+  border-radius: 5px;
 }
 
 .avisoText {
-    color: black; /* Ensure text is visible on yellow background */
-    font-weight: bold;
-    font-size: 14px;
+  color: black; /* Ensure text is visible on yellow background */
+  font-weight: bold;
+  font-size: 14px;
 }
 
 .content {
-    padding: 20px;
-    font-size: 16px;
-    color: #333;
+  padding: 20px;
+  font-size: 16px;
+  color: #333;
 }
 
 .content h1 {
-    font-size: 24px;
-    margin-bottom: 10px;
+  font-size: 24px;
+  margin-bottom: 10px;
 }
 
 .content p {
-    line-height: 1.6;
+  line-height: 1.6;
+}
+
+/* Modal */
+/* Estilização específica para o modal de avisos */
+.avisos-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2100; /* Um pouco maior para garantir que fique acima dos outros modais */
+}
+
+.avisos-modal-content {
+  background: white;
+  padding: 20px;
+  width: 90%;
+  max-width: 350px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  position: relative;
+}
+
+.avisos-modal-title {
+  margin-bottom: 15px;
+  color: #e74c3c;
+  font-size: 20px;
+}
+
+.avisos-modal-text {
+  color: #333;
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+.avisos-modal-button {
+  width: 90%;
+  padding: 10px;
+  background-color: #e74c3c;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out;
+}
+
+.avisos-modal-button:hover {
+  background-color: #c0392b;
 }

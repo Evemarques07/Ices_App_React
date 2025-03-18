@@ -1,12 +1,15 @@
-import React from 'react'
-import { createRoot } from 'react-dom/client'
-import {RouterProvider} from 'react-router-dom'
-import './css/index.css'
+// src/main.jsx
+import React from "react";
+import { createRoot } from "react-dom/client";
+import { RouterProvider } from "react-router-dom";
+import "./css/index.css";
+import router from "./routes/Navigation.jsx";
+import { AuthProvider } from "./context/AuthContext"; // Importando o contexto de autenticação
 
-import router from './routes/Navigation.jsx'
-
-createRoot(document.getElementById('root')).render(
+createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
-  </React.StrictMode>,
-)
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
+  </React.StrictMode>
+);

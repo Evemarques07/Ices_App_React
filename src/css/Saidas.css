@@ -1,0 +1,119 @@
+/* Saidas.css */
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: "Arial", sans-serif;
+  opacity: 0;
+  transition: opacity 0.6s ease-in-out;
+}
+
+.container.fade-in {
+  opacity: 1;
+}
+
+.title {
+  font-size: 2rem;
+  text-align: center;
+  color: #0077b6;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.year-month {
+  text-align: center;
+  font-size: 1.3rem;
+  color: #555;
+  margin-bottom: 25px;
+}
+
+.loading,
+.error {
+  text-align: center;
+  font-size: 1rem;
+  color: #d9534f;
+  margin-top: 10px;
+}
+
+.saidas-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 20px;
+  width: auto;
+}
+
+.saidas-section {
+  background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+  border-radius: 12px;
+  padding: 20px;
+  width: 100%;
+  max-width: 380px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+}
+
+.saidas-section:hover {
+  transform: scale(1.02);
+}
+
+.section-header {
+  font-size: 1.5rem;
+  color: #0077b6;
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 12px;
+}
+
+.saida-item {
+  width: 300px;
+  background-color: white;
+  padding: 12px;
+  margin: 8px 0;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: background 0.3s ease-in-out;
+}
+
+.saida-item:hover {
+  background: #f1f1f1;
+}
+
+.saida-item p {
+  margin: 5px 0;
+  font-size: 1rem;
+  color: #333;
+}
+
+.valor {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #0077b6;
+}
+
+.data {
+  font-size: 0.95rem;
+  color: #666;
+}
+
+.total {
+  font-size: 1.4rem;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 15px;
+  color: #0077b6;
+}
+
+/* Total geral do mês */
+.total-geral {
+  font-size: 1.6rem;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 30px;
+  padding: 15px;
+  background-color: #0077b6;
+  color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+}
