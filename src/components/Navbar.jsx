@@ -55,15 +55,15 @@ const Navbar = () => {
   };
 
   useEffect(() => {
-    console.log("Verificando user:", user);
+    // console.log("Verificando user:", user);
     if (user && user.idUser) {
-      console.log("Chamando fetchAvisos...");
+      // console.log("Chamando fetchAvisos...");
       fetchAvisos();
     }
   }, [user]);
 
   useEffect(() => {
-    console.log("🔄 Atualizando UI: hasNewAvisos =", hasNewAvisos);
+    // console.log("🔄 Atualizando UI: hasNewAvisos =", hasNewAvisos);
   }, [hasNewAvisos]);
 
   const fetchAvisos = async () => {
@@ -83,7 +83,7 @@ const Navbar = () => {
         withCredentials: true,
       });
 
-      console.log("✅ Avisos recebidos:", response.data);
+      // console.log("✅ Avisos recebidos:", response.data);
 
       // Se houver avisos, definir hasNewAvisos como true
       if (response.data.length > 0) {
@@ -116,8 +116,8 @@ const Navbar = () => {
         <Link to="/contribuicoes" className="nav-link">
           Contribuições
         </Link>
-        <Link to="/saidas" className="nav-link">
-          Saídas
+        <Link to="/relatorios" className="nav-link">
+          Relatórios
         </Link>
         <Link to="/avisos" className="nav-link">
           Avisos
@@ -148,8 +148,8 @@ const Navbar = () => {
         <Link to="/contribuicoes" className="nav-link" onClick={toggleMenu}>
           Contribuições
         </Link>
-        <Link to="/saidas" className="nav-link" onClick={toggleMenu}>
-          Saídas
+        <Link to="/relatorios" className="nav-link" onClick={toggleMenu}>
+          Relatórios
         </Link>
         <Link to="/avisos" className="nav-link" onClick={toggleMenu}>
           Avisos

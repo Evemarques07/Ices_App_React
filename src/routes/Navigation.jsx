@@ -12,6 +12,10 @@ import YearSelectionCont from "../pages/YearContribuicions.jsx";
 import MonthSelection from "../pages/MonthSelection.jsx";
 import Saidas from "../pages/Saidas.jsx";
 import Avisos from "../pages/Avisos.jsx";
+import RelatoriosOpcao from "../pages/RelatoriosOpcao.jsx";
+import YearEntradas from "../pages/YearEntradas.jsx";
+import MonthEntradas from "../pages/MonthEntradas.jsx";
+import Entradas from "../pages/Entradas.jsx";
 
 const router = createBrowserRouter([
   {
@@ -50,6 +54,22 @@ const router = createBrowserRouter([
       {
         path: "/avisos",
         element: <Avisos />,
+      },
+      {
+        path: "/relatorios",
+        element: <RelatoriosOpcao />,
+      },
+      {
+        path: "/entradas",
+        element: <YearEntradas />,
+      },
+      {
+        path: "/entradas/:mes",
+        element: <MonthEntradas />,
+      },
+      {
+        path: "/entradas/detalhes",
+        element: <Entradas />,
       },
     ],
   },

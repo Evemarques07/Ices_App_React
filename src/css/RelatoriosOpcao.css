@@ -1,0 +1,72 @@
+/* Estilos da página inicial */
+.home-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: linear-gradient(135deg, #0097d9, #005f8d);
+  color: white;
+  text-align: center;
+}
+
+.home-title {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 30px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+/* Container dos botões */
+.button-container {
+  display: flex;
+  gap: 20px;
+}
+
+/* Estilos dos botões */
+.home-button {
+  width: 180px;
+  padding: 15px 20px;
+  font-size: 18px;
+  font-weight: bold;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.entradas {
+  background: #28a745;
+  color: white;
+}
+
+.entradas:hover {
+  background: #218838;
+  transform: scale(1.05);
+}
+
+.saidas {
+  background: #dc3545;
+  color: white;
+}
+
+.saidas:hover {
+  background: #c82333;
+  transform: scale(1.05);
+}
+
+/* Responsivo para telas menores */
+@media (max-width: 600px) {
+  .button-container {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .home-button {
+    width: 200px;
+  }
+}

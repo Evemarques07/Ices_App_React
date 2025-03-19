@@ -31,10 +31,11 @@ const Home = () => {
     }
 
     const { idMembro } = decodedToken;
+    const { idUser } = decodedToken;
 
     const fetchCapitalizedName = async () => {
       try {
-        const response = await api.get(`/usuarios/capitalize/${idMembro}`, {
+        const response = await api.get(`/usuarios/capitalize/${idUser}`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         setCapitalizedName(response.data.capitalized_login);

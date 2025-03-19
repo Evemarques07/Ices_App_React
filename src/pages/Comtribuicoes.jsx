@@ -19,14 +19,14 @@ const Contributions = () => {
   const activeUser = user || storedUser;
   const activeToken = token || storedToken;
 
-  console.log("🔹 Usuário ativo:", activeUser);
-  console.log("🔹 Token ativo:", activeToken);
+  // console.log("🔹 Usuário ativo:", activeUser);
+  // console.log("🔹 Token ativo:", activeToken);
 
-  console.log("Usuário logado:", user);
+  // console.log("Usuário logado:", user);
 
   useEffect(() => {
-    console.log("🔄 Verificando atualização do usuário...");
-    console.log("👤 Estado do usuário no contexto:", user);
+    // console.log("🔄 Verificando atualização do usuário...");
+    // console.log("👤 Estado do usuário no contexto:", user);
   }, [user]);
 
   const fetchEntradas = useCallback(async () => {
@@ -35,7 +35,7 @@ const Contributions = () => {
     let decoded;
     try {
       decoded = jwtDecode(activeToken);
-      console.log("✅ Token decodificado:", decoded);
+      // console.log("✅ Token decodificado:", decoded);
     } catch (error) {
       console.error("❌ Erro ao decodificar o token:", error);
       return;
@@ -56,12 +56,12 @@ const Contributions = () => {
           headers: { Authorization: `Bearer ${activeToken}` },
         }
       );
-      console.log(
-        "Enviando o membro: ",
-        decoded.idMembro,
-        "e ano: ",
-        selectedYear
-      );
+      // console.log(
+      //   "Enviando o membro: ",
+      //   decoded.idMembro,
+      //   "e ano: ",
+      //   selectedYear
+      // );
 
       if (!Array.isArray(response.data)) {
         throw new Error("Formato de resposta inválido");
@@ -78,6 +78,7 @@ const Contributions = () => {
         "Ofertas Missionarias",
         "Campanhas",
         "Eventos",
+        "Projetos",
         "Venda Materiais",
         "Doacoes Empresas",
         "Parcerias Ongs",
