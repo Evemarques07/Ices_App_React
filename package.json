@@ -1,8 +1,20 @@
 {
   "name": "ice_app",
-  "private": true,
   "version": "0.0.0",
+  "private": true,
+  "description": "This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.",
+  "homepage": "https://github.com/Evemarques07/Ices_App_React#readme",
+  "bugs": {
+    "url": "https://github.com/Evemarques07/Ices_App_React/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Evemarques07/Ices_App_React.git"
+  },
+  "license": "ISC",
+  "author": "Everton Marques",
   "type": "module",
+  "main": "eslint.config.js",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
