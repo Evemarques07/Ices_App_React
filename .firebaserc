@@ -1,5 +1,7 @@
 {
   "projects": {
-    "default": "icesreact"
-  }
+    "default": "icesapp-75056"
+  },
+  "targets": {},
+  "etags": {}
 }

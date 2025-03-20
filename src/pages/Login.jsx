@@ -21,8 +21,8 @@ const Login = () => {
     setError("");
 
     const formData = new URLSearchParams();
-    formData.append("username", username);
-    formData.append("password", password);
+    formData.append("username", username.trim());
+    formData.append("password", password.trim());
 
     try {
       const response = await api.post("/auth/token", formData.toString(), {
