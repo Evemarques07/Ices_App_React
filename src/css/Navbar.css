@@ -1,7 +1,7 @@
 /* Estilos Gerais */
 #navbar {
   background-color: #0097d9;
-  padding: 20px;
+  padding: 8px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -16,13 +16,13 @@
 .logo {
   border-radius: 10px;
   background-color: white;
-  padding: 5px 10px;
+  padding: 2px 5px;
   display: flex;
   align-items: center;
 }
 
 .logo-image {
-  height: 4rem;
+  height: 3rem;
   width: auto;
 }
 
@@ -221,6 +221,6 @@
   }
 
   .logo-image {
-    height: 4rem;
+    height: 3rem;
   }
 }

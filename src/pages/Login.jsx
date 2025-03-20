@@ -3,6 +3,7 @@ import "../css/Login.css";
 import api from "../services/api";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
+import logo from "../assets/images/logoPombaAzul.png";
 
 const Login = () => {
   const { user, token, login } = useAuth();
@@ -18,11 +19,18 @@ const Login = () => {
   }, [user, token, navigate]);
 
   const handleLogin = async () => {
-    setError("");
+    const trimmedUsername = username.trim();
+    const trimmedPassword = password.trim();
 
+    if (!trimmedUsername || !trimmedPassword) {
+      setError("Por favor, preencha todos os campos.");
+      return;
+    }
+
+    setError("");
     const formData = new URLSearchParams();
-    formData.append("username", username.trim());
-    formData.append("password", password.trim());
+    formData.append("username", trimmedUsername);
+    formData.append("password", trimmedPassword);
 
     try {
       const response = await api.post("/auth/token", formData.toString(), {
@@ -43,9 +51,16 @@ const Login = () => {
     }
   };
 
+  const handleKeyPress = (e) => {
+    if (e.key === "Enter" && username.trim() && password.trim()) {
+      handleLogin();
+    }
+  };
+
   return (
     <div className="login-container">
       <div className="login-card">
+        <img src={logo} alt="Logo" className="logoLogin" />
         <h1>Login</h1>
         {error && <p className="error-message">{error}</p>}
         <div className="input-container">
@@ -53,8 +68,9 @@ const Login = () => {
             type="text"
             placeholder="Usuário"
             value={username}
-            onChange={(e) => setUsername(e.target.value)}
+            onChange={(e) => setUsername(e.target.value.trimStart())}
             required
+            onKeyDown={handleKeyPress}
           />
           <input
             type="password"
@@ -62,9 +78,14 @@ const Login = () => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
+            onKeyDown={handleKeyPress}
           />
         </div>
-        <button className="login-button" onClick={handleLogin}>
+        <button
+          className="login-button"
+          onClick={handleLogin}
+          disabled={!username.trim() || !password.trim()}
+        >
           Entrar
         </button>
       </div>

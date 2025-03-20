@@ -29,9 +29,17 @@ const Navbar = () => {
     e.preventDefault();
     setError("");
 
+    const trimmedUsername = username.trim();
+    const trimmedPassword = password.trim();
+
+    if (!trimmedUsername || !trimmedPassword) {
+      setError("Por favor, preencha todos os campos.");
+      return;
+    }
+
     const formData = new URLSearchParams();
-    formData.append("username", username);
-    formData.append("password", password);
+    formData.append("username", trimmedUsername);
+    formData.append("password", trimmedPassword);
 
     try {
       const response = await api.post("/auth/token", formData.toString(), {
@@ -42,7 +50,7 @@ const Navbar = () => {
       if (response.status === 200) {
         const { access_token } = response.data;
         login(null, access_token);
-        setShowLoginModal(false); // Fecha o modal após login bem-sucedido
+        setShowLoginModal(false);
         setUsername("");
         setPassword("");
       } else {
@@ -128,7 +136,7 @@ const Navbar = () => {
 
         {user ? (
           <button className="logout-btn" onClick={handleLogout}>
-            Sair
+            Logout
           </button>
         ) : (
           <button className="login-btn" onClick={() => setShowLoginModal(true)}>
@@ -160,7 +168,7 @@ const Navbar = () => {
 
         {user ? (
           <button className="logout-btn" onClick={handleLogout}>
-            Sair
+            Logout
           </button>
         ) : (
           <button className="login-btn" onClick={() => setShowLoginModal(true)}>
@@ -186,14 +194,14 @@ const Navbar = () => {
                 type="text"
                 placeholder="Usuário"
                 value={username}
-                onChange={(e) => setUsername(e.target.value)}
+                onChange={(e) => setUsername(e.target.value.trimStart())}
                 required
               />
               <input
                 type="password"
                 placeholder="Senha"
                 value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                onChange={(e) => setPassword(e.target.value.trimStart())}
                 required
               />
               <button type="submit">Entrar</button>
